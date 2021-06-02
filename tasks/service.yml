@@ -1,0 +1,35 @@
+---
+- name: Template service definition
+  template:
+    src: 'jenkins-agent.xml.j2'
+    dest: '{{ windows_jenkins_agent_service }}'
+    user: 'jenkins'
+  register: service_file
+
+- name: Check Jenkins agent service status
+  win_command: '{{ windows_jenkins_winsw_path }} status'
+  register: service_status
+  ignore_errors: true
+
+- name: Stop the Jenkins agent service
+  win_command: '{{ windows_jenkins_winsw_path }} stopwait'
+  register: service_install
+  when: >
+    (service_status.stdout|trim) != "NonExistent"
+    and service_file.changed
+
+- name: Uninstall the Jenkins agent service
+  win_command: '{{ windows_jenkins_winsw_path }} uninstall'
+  register: service_install
+  when: >
+    (service_status.stdout|trim) != "NonExistent"
+    and service_file.changed
+
+- name: Install the Jenkins agent service
+  win_command: '{{ windows_jenkins_winsw_path }} install'
+  when: >
+    (service_status.stdout|trim) == "NonExistent"
+    or service_install.changed
+
+- name: (Re)Start the Jenkins agent service
+  win_command: '{{ windows_jenkins_winsw_path }} restart'

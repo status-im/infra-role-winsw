@@ -1,0 +1,31 @@
+---
+id: '{{ winsw_service_id | mandatory }}'
+name: '{{ winsw_service_name | mandatory }}'
+description: '{{ winsw_service_description | mandatory }}'
+stoptimeout: {{ winsw_service_stop_timeout | mandatory }}
+priority: '{{ winsw_service_priority | mandatory }}'
+{% if winsw_service_log_mode != 'append' %}
+log:
+  mode: '{{ winsw_service_log_mode | mandatory }}'
+  logpath: '%BASE/log%'
+  pattern: '{{ winsw_service_log_pattern | mandatory }}'
+  sizeThreshold: {{ winsw_service_log_size | mandatory }}
+  autoRollAtTime: '{{ winsw_service_log_roll_at | mandatory }}'
+  keepFiles: {{ winsw_service_log_keep | mandatory }}
+{% if winsw_service_logon_enabled %}
+serviceaccount:
+  domain: '{{ winsw_service_logon_domain | mandatory }}'
+  user: '{{ winsw_service_user | mandatory }}'
+  password: '{{ winsw_service_logon_pass | mandatory }}'
+  allowservicelogon: true
+env:
+{% endif %}
+{% for key, val in winsw_service_environment.items() %}
+  - { name: '{{ key }}', value: '{{ val }}' }
+{% endfor %}
+workingdirectory: '{{ winsw_service_work_dir | mandatory }}'
+executable: '{{ winsw_service_executable | mandatory }}'
+arguments: >
+{% for arg in winsw_service_arguments %}
+  {{ arg | mandatory }}
+{% endfor %}

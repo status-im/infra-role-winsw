@@ -1,13 +1,13 @@
 ---
-winsw_service_id: ~
-winsw_service_name: ~
-winsw_service_user: ~
+#winsw_service_id: ~
+#winsw_service_name: ~
+#winsw_service_user: ~
 winsw_service_path: 'C:\Users\{{ winsw_service_user }}\{{ winsw_service_id }}'
 winsw_service_description: 'Service managed by WinSW'
 winsw_service_definition: '{{ winsw_service_path }}\{{ winsw_service_id }}.xml'
 winsw_service_arguments: []
-winsw_service_exe_url: ~
-winsw_service_exe_sha256: ~
+#winsw_service_exe_url: ~
+#winsw_service_exe_sha256: ~
 winsw_service_exe_path: '{{ winsw_service_path }}\{{ winsw_service_id }}.exe'
 winsw_service_work_dir: '{{ winsw_service_path }}'
 winsw_service_pid_path: '{{ winsw_service_path }}/{{ winsw_service_id }}.pid'
@@ -32,6 +32,6 @@ winsw_service_environment: {}
 
 # Binary of the wrapper
 winsw_service_wrapper_version: 'v2.11.0'
-winsw_service_wrapper_url: 'https://github.com/winsw/winsw/releases/download/{{ windows_jenkins_winsw_version }}/WinSW.NET461.exe'
+winsw_service_wrapper_url: 'https://github.com/winsw/winsw/releases/download/{{ winsw_service_wrapper_version }}/WinSW.NET461.exe'
 winsw_service_wrapper_sha256: 'fa65df592bac031f1c647664450e35968b01023c'
 winsw_service_wrapper_path: '{{ winsw_service_path }}\{{ winsw_service_id }}.exe'

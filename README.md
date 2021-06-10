@@ -19,6 +19,7 @@ winsw_service_arguments:
   - '-jnlpUrl "{{ jnlp_url }}"'
   - '-secret "{{ jnlp_secret }}"'
 ```
+You can also just specify `winsw_service_exe_path` if there's no need to download it.
 
 # Management
 

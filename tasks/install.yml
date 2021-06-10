@@ -5,16 +5,22 @@
     state: 'directory'
     user: 'jenkins'
 
+- name: Check if service binary exists
+  win_stat:
+    path: '{{ winsw_service_exe_path | mandatory }}'
+  register: winsw_service_exe
+
 - name: Download service binary
   win_get_url:
     url: '{{ winsw_service_exe_url | mandatory }}'
     dest: '{{ winsw_service_exe_path | mandatory }}'
     checksum: 'sha256:{{ winsw_service_exe_sha256 | mandatory }}'
     user: '{{ winsw_service_user | mandatory }}'
+  when: not winsw_service_exe.stat.exists
 
 - name: Download WinSW binary
   win_get_url:
     url: '{{ winsw_service_wrapper_url | mandatory }}'
     dest: '{{ winsw_service_wrapper_path | mandatory }}'
-    checksum: 'sha256:{{ winsw_service_wrapper_sha256 | mandatory }}'
+    checksum: '{{ winsw_service_wrapper_sha256 | mandatory }}'
     user: '{{ winsw_service_user | mandatory }}'

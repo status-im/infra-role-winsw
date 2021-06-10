@@ -4,7 +4,7 @@
 #winsw_service_user: ~
 winsw_service_path: 'C:\Users\{{ winsw_service_user }}\{{ winsw_service_id }}'
 winsw_service_description: 'Service managed by WinSW'
-winsw_service_definition: '{{ winsw_service_path }}\{{ winsw_service_id }}.xml'
+winsw_service_definition: '{{ winsw_service_path }}\{{ winsw_service_id }}.yml'
 winsw_service_arguments: []
 #winsw_service_exe_url: ~
 #winsw_service_exe_sha256: ~

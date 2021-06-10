@@ -27,6 +27,4 @@ env:
 workingdirectory: '{{ winsw_service_work_dir | mandatory }}'
 executable: '{{ winsw_service_exe_path | mandatory }}'
 arguments: >
-{% for arg in winsw_service_arguments %}
-  {{ arg | mandatory }}
-{% endfor %}
+  {{ winsw_service_arguments | indent( width=2) }}

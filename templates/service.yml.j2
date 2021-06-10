@@ -25,7 +25,7 @@ env:
   - { name: '{{ key }}', value: '{{ val }}' }
 {% endfor %}
 workingdirectory: '{{ winsw_service_work_dir | mandatory }}'
-executable: '{{ winsw_service_executable | mandatory }}'
+executable: '{{ winsw_service_exe_path | mandatory }}'
 arguments: >
 {% for arg in winsw_service_arguments %}
   {{ arg | mandatory }}

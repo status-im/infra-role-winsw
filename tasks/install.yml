@@ -1,14 +1,27 @@
 ---
-- name: Create service directory
+- name: Create service directories
   win_file:
-    path: '{{ winsw_service_path | mandatory }}'
+    path: '{{ item }}'
     state: 'directory'
     user: 'jenkins'
+  with_items:
+    - '{{ winsw_service_path }}'
+    - '{{ winsw_service_work_dir }}'
+    - '{{ winsw_service_logs_dir }}'
 
 - name: Check if service binary exists
   win_stat:
     path: '{{ winsw_service_exe_path | mandatory }}'
   register: winsw_service_exe
+
+- name: Check availability of binary
+  assert:
+    that: >-
+      winsw_service_exe.stat.exists or
+      (winsw_service_exe_url is defined and
+       winsw_service_exe_sha256 is defined)
+    fail_msg: 'Cannot find binary nor download it!'
+    quiet: true
 
 - name: Download service binary
   win_get_url:

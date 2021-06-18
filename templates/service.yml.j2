@@ -14,7 +14,7 @@ log:
   keepFiles: {{ winsw_service_log_keep | mandatory }}
 {% endif %}
 {% if winsw_service_logon_enabled %}
-serviceaccount:
+serviceAccount:
   domain: '{{ winsw_service_logon_domain | mandatory }}'
   user: '{{ winsw_service_user | mandatory }}'
   password: '{{ winsw_service_logon_pass | mandatory }}'

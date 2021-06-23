@@ -2,8 +2,8 @@
 - name: Create service directories
   win_file:
     path: '{{ item }}'
+    user: '{{ winsw_service_user | mandatory }}'
     state: 'directory'
-    user: 'jenkins'
   with_items:
     - '{{ winsw_service_path }}'
     - '{{ winsw_service_work_dir }}'

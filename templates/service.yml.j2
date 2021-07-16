@@ -18,6 +18,7 @@ serviceAccount:
   domain: '{{ winsw_service_logon_domain | mandatory }}'
   user: '{{ winsw_service_user | mandatory }}'
   password: '{{ winsw_service_logon_pass | mandatory }}'
+  # WARNING: Does not work, requires manual intervention.
   allowservicelogon: true
 env:
 {% endif %}

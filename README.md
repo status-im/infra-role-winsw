@@ -24,3 +24,9 @@ You can also just specify `winsw_service_exe_path` if there's no need to downloa
 # Management
 
 TODO
+
+# Known Issues
+
+Configuring services to run as a regular user with `allowservicelogon: true` does not work currently for some unknown reason. It can be fixed manually by updating the user password in service properties which will trigger granting the "logon" right for the user and will fix any other services using that user.
+
+Issue: https://github.com/winsw/winsw/issues/840

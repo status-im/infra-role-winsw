@@ -4,6 +4,8 @@ name: '{{ winsw_service_name | mandatory }}'
 description: '{{ winsw_service_description | mandatory }}'
 stoptimeout: {{ winsw_service_stop_timeout | mandatory }}
 priority: '{{ winsw_service_priority | mandatory }}'
+onFailure:
+  - action: {{ winsw_service_on_failure }}
 {% if winsw_service_log_mode != 'append' %}
 log:
   mode: '{{ winsw_service_log_mode | mandatory }}'

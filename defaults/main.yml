@@ -10,7 +10,7 @@ winsw_service_arguments: []
 #winsw_service_exe_sha256: ~
 winsw_service_exe_path: '{{ winsw_service_path }}\{{ winsw_service_id }}.exe'
 winsw_service_work_dir: '{{ winsw_service_path }}'
-winsw_service_logs_dir: '{{ winsw_service_path }}\log'
+winsw_service_logs_dir: '{{ winsw_service_path }}\logs'
 winsw_service_pid_path: '{{ winsw_service_path }}\{{ winsw_service_id }}.pid'
 winsw_service_stop_timeout: 10
 winsw_service_on_failure: 'restart'

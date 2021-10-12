@@ -18,9 +18,10 @@ winsw_service_on_failure: 'restart'
 winsw_service_priority: 'normal'
 
 # https://github.com/winsw/winsw/blob/v2.11.0/doc/loggingAndErrorReporting.md
-winsw_service_log_mode: 'roll-by-size-time'
+winsw_service_log_mode: 'roll-by-size'
 winsw_service_log_keep: 10
-winsw_service_log_size: 10240
+winsw_service_log_size: 102400
+# Only in effect when using 'roll-by-size-time' mode
 winsw_service_log_roll_at: '01:00:00'
 winsw_service_log_pattern: 'yyyyMMdd-HHmmss'
 

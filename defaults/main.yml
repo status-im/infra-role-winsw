@@ -24,6 +24,9 @@ winsw_service_log_size: 102400
 # Only in effect when using 'roll-by-size-time' mode
 winsw_service_log_roll_at: '01:00:00'
 winsw_service_log_pattern: 'yyyyMMdd-HHmmss'
+# Some services do not generate stderr or stdout
+winsw_service_log_stderr_disabled: false
+winsw_service_log_stdout_disabled: false
 
 # The service is installed as the LocalSystem account by default.
 winsw_service_logon_enabled: false

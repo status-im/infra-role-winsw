@@ -16,6 +16,12 @@ log:
   pattern: '{{ winsw_service_log_pattern | mandatory }}'
   autoRollAtTime: '{{ winsw_service_log_roll_at | mandatory }}'
 {% endif %}
+{% if winsw_service_log_stdout_disabled %}
+  outfiledisabled: true
+{% endif %}
+{% if winsw_service_log_stderr_disabled %}
+  errFileDisabled: true
+{% endif %}
 {% endif %}
 {% if winsw_service_logon_enabled %}
 serviceAccount:

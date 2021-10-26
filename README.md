@@ -29,11 +29,15 @@ That same binary can be used to install, start, stop, restart, and uninstall the
 admin@windows-01 MINGW64 .../jenkins-agent
 $ ls -l
 total 25188
--rw-r--r-- 1 admin 197121        0 Jul 16 14:49 jenkins-agent.err.log
 -rwxr-xr-x 1 admin 197121   655872 Jul 16 14:37 jenkins-agent.exe*
+-rw-r--r-- 1 admin 197121     1254 Jul 16 14:37 jenkins-agent.yml
+drw-r--r-- 1 admin 197121        0 Jul 16 14:37 logs
+
+admin@windows-01 MINGW64 .../jenkins-agent
+$ ls -l logs
+-rw-r--r-- 1 admin 197121        0 Jul 16 14:49 jenkins-agent.err.log
 -rw-r--r-- 1 admin 197121 13911763 Jul 16 15:40 jenkins-agent.out.log
 -rw-r--r-- 1 admin 197121     2158 Jul 16 14:49 jenkins-agent.wrapper.log
--rw-r--r-- 1 admin 197121     1254 Jul 16 14:37 jenkins-agent.yml
 
 admin@windows-01 MINGW64 .../jenkins-agent
 $ ./jenkins-agent.exe stop

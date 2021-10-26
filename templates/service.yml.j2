@@ -9,7 +9,7 @@ onFailure:
 {% if winsw_service_log_mode != 'append' %}
 log:
   mode: '{{ winsw_service_log_mode | mandatory }}'
-  logpath: '{{ winsw_service_logs_dir | mandatory }}'
+  logPath: '{{ winsw_service_logs_dir | mandatory }}'
   sizeThreshold: {{ winsw_service_log_size | mandatory }}
   keepFiles: {{ winsw_service_log_keep | mandatory }}
 {% if winsw_service_log_mode == 'roll-by-size-time' %}

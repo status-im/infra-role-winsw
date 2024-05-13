@@ -13,10 +13,10 @@
 
 - name: Stop service
   win_command: '{{ winsw_service_wrapper_path }} stopwait'
-  register: service_install
+  register: service_stopwait
   when: >
     (service_status.stdout|trim) != "NonExistent"
-    and service_file.changed
+    and (service_file.changed or winsw_service_restart)
 
 - name: Uninstall service
   win_command: '{{ winsw_service_wrapper_path }} uninstall'
@@ -31,5 +31,5 @@
     (service_status.stdout|trim) == "NonExistent"
     or service_install.changed
 
-- name: (Re)Start service
-  win_command: '{{ winsw_service_wrapper_path }} restart'
+- name: Start service
+  win_command: '{{ winsw_service_wrapper_path }} start'
